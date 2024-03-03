@@ -88,7 +88,10 @@ router.put("/",authMiddleware, async function(req,res){
 })
 
 router.get("/bulk",authMiddleware,async (req,res)=>{
-    const filter = req.query.filter;
+    let filter = req.query.filter;
+    if (!filter) {
+        filter = ""; 
+    }
     const users = await User.find({
         $or: [{
             firstName: {
