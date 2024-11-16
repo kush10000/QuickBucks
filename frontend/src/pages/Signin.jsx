@@ -6,6 +6,7 @@ import InputBox from "../components/InputBox"
 import Button from "../components/Button"
 import ButtonWarning from "../components/ButtonWarning"
 import { useNavigate } from "react-router-dom"
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 export default function Signin(){
     const [email,setEmail] = useState("")
@@ -24,7 +25,7 @@ export default function Signin(){
                     setPassword(e.target.value)
                 }} placeholder={""}/>
                 <Button label={"Sign in"} handleClick={async ()=>{
-                    const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
+                    const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, {
                         username:email,
                         password
                       });
@@ -32,7 +33,7 @@ export default function Signin(){
                         navigate("/dashboard");
                     }
                 }/>
-                <ButtonWarning label={"Don't have an account? "} buttonText={"Sign ip"} to={"/signup"}/>
+                <ButtonWarning label={"Don't have an account? "} buttonText={"Sign Up"} to={"/signup"}/>
             </div>
 
             

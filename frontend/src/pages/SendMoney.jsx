@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom"
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 export default function SendMoney(){
 
@@ -43,7 +44,7 @@ export default function SendMoney(){
                     </div>
                     <button class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white hover:bg-green-700 active:bg-green-800"
                     onClick={()=>{
-                        axios.post("http://localhost:3000/api/v1/account/transfer", {
+                        axios.post(`${BACKEND_URL}/api/v1/account/transfer`, {
                             to: id,
                             amount
                         }, {

@@ -1,5 +1,7 @@
 const z = require('zod');
 
+
+
 const Signup = z.object({
     username:z.string().email(),
     password:z.string().min(8),
